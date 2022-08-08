@@ -11,6 +11,7 @@ void	philo_eat(t_philo *p)
 	print_action(in, p->id, "has taken right fork");
 	print_action(in, p->id, "is eating");
 	p->last_meal = get_time();
+	p->ate += 1;
 	pause_time(in->e_time, in);
 	pthread_mutex_unlock(&(in->forks[p->left_fork]));
 	pthread_mutex_unlock(&(in->forks[p->right_fork]));
@@ -28,6 +29,8 @@ void	*routine(void *p)
 	while (!in->death)
 	{
 		philo_eat(philo);
+		if (in->all_ate)
+			break ;
 		print_action(in, philo->id, "is sleeping");
 		pause_time(in->s_time, in);
 		print_action(in, philo->id, "is thinking");

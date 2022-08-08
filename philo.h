@@ -14,6 +14,7 @@ typedef struct	s_philo
 	int				left_fork;
 	int				right_fork;
 	long long		last_meal;
+	int				ate;
 	pthread_t		philo_t;
 	struct s_input	*in;
 }	t_philo;
@@ -27,6 +28,7 @@ typedef struct	s_input
 	int				e_num;
 	long long		first_time;
 	int				death;
+	int				all_ate;
 	t_philo			philo[300];
 	pthread_mutex_t	forks[300];
 	pthread_mutex_t	msging;
