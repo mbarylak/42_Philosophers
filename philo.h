@@ -6,7 +6,7 @@
 /*   By: mbarylak <mbarylak@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 19:26:30 by mbarylak          #+#    #+#             */
-/*   Updated: 2022/08/09 19:28:24 by mbarylak         ###   ########.fr       */
+/*   Updated: 2022/08/09 20:23:57 by mbarylak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ int			create_philo(t_input *in);
 /**		ROUTINE		**/
 
 void		*routine(void *p);
+void		*lone_r(void *p);
 
 /**		UTILS		**/
 

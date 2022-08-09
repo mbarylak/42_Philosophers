@@ -6,7 +6,7 @@
 /*   By: mbarylak <mbarylak@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 19:23:51 by mbarylak          #+#    #+#             */
-/*   Updated: 2022/08/09 19:23:55 by mbarylak         ###   ########.fr       */
+/*   Updated: 2022/08/09 20:32:09 by mbarylak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,5 +49,19 @@ void	*routine(void *p)
 		pause_time(in->s_time, in);
 		print_action(in, philo->id, "is thinking");
 	}
+	return (NULL);
+}
+
+void	*lone_r(void *p)
+{
+	t_philo	*philo;
+	t_input	*in;
+
+	philo = (t_philo *) p;
+	in = philo->in;
+	print_action(in, philo->id, "has taken left fork");
+	pause_time(in->d_time, in);
+	print_action(in, philo->id, "died");
+	in->death = 1;
 	return (NULL);
 }

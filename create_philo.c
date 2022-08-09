@@ -6,7 +6,7 @@
 /*   By: mbarylak <mbarylak@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 19:25:54 by mbarylak          #+#    #+#             */
-/*   Updated: 2022/08/09 19:41:10 by mbarylak         ###   ########.fr       */
+/*   Updated: 2022/08/09 20:25:34 by mbarylak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,18 @@ void	check_death(t_input *in, t_philo *p)
 	}
 }
 
+int	one_philo(t_input *in)
+{
+	t_philo	*p;
+
+	p = in->philo;
+	in->first_time = get_time();
+	if (pthread_create(&(p[0].philo_t), NULL, lone_r, &p[0]))
+		return (1);
+	pthread_join(p[0].philo_t, NULL);
+	return (0);
+}
+
 int	create_philo(t_input *in)
 {
 	int		i;
@@ -69,6 +81,8 @@ int	create_philo(t_input *in)
 	i = 0;
 	p = in->philo;
 	in->first_time = get_time();
+	if (in->p_num == 1)
+		return (one_philo(in));
 	while (i < in->p_num && !in->death && !in->all_ate)
 	{
 		if (pthread_create(&(p[i].philo_t), NULL, routine, &p[i]))
