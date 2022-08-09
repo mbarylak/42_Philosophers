@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mbarylak <mbarylak@student.42madrid>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/08/09 19:25:22 by mbarylak          #+#    #+#             */
+/*   Updated: 2022/08/09 19:25:30 by mbarylak         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "philo.h"
 
 int	init_mutex(t_input *in)
@@ -11,6 +23,8 @@ int	init_mutex(t_input *in)
 			return (1);
 		i++;
 	}
+	if (pthread_mutex_init(&(in->eating), NULL))
+		return (1);
 	if (pthread_mutex_init(&(in->msging), NULL))
 		return (1);
 	return (0);

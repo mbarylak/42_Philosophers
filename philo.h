@@ -1,4 +1,16 @@
-#ifndef	PHILO_H
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   philo.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mbarylak <mbarylak@student.42madrid>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/08/09 19:26:30 by mbarylak          #+#    #+#             */
+/*   Updated: 2022/08/09 19:28:24 by mbarylak         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#ifndef PHILO_H
 # define PHILO_H
 
 # include <stdlib.h>
@@ -8,7 +20,7 @@
 # include <pthread.h>
 # include <sys/time.h>
 
-typedef struct	s_philo
+typedef struct s_philo
 {
 	int				id;
 	int				left_fork;
@@ -19,7 +31,7 @@ typedef struct	s_philo
 	struct s_input	*in;
 }	t_philo;
 
-typedef struct	s_input
+typedef struct s_input
 {
 	int				p_num;
 	int				d_time;
@@ -32,6 +44,7 @@ typedef struct	s_input
 	t_philo			philo[300];
 	pthread_mutex_t	forks[300];
 	pthread_mutex_t	msging;
+	pthread_mutex_t	eating;
 }	t_input;
 
 /**		CREATE PHILO	**/

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   routine.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mbarylak <mbarylak@student.42madrid>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/08/09 19:23:51 by mbarylak          #+#    #+#             */
+/*   Updated: 2022/08/09 19:23:55 by mbarylak         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "philo.h"
 
 void	philo_eat(t_philo *p)
@@ -9,9 +21,11 @@ void	philo_eat(t_philo *p)
 	print_action(in, p->id, "has taken left fork");
 	pthread_mutex_lock(&(in->forks[p->right_fork]));
 	print_action(in, p->id, "has taken right fork");
+	pthread_mutex_lock(&(in->eating));
 	print_action(in, p->id, "is eating");
 	p->last_meal = get_time();
 	p->ate += 1;
+	pthread_mutex_unlock(&(in->eating));
 	pause_time(in->e_time, in);
 	pthread_mutex_unlock(&(in->forks[p->left_fork]));
 	pthread_mutex_unlock(&(in->forks[p->right_fork]));
@@ -24,7 +38,7 @@ void	*routine(void *p)
 
 	philo = (t_philo *)p;
 	in = philo->in;
-	if (philo->id % 2 == 0)
+	if (philo->id % 2 != 0)
 		usleep(15000);
 	while (!in->death)
 	{
