@@ -6,7 +6,7 @@
 /*   By: mbarylak <mbarylak@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 19:23:51 by mbarylak          #+#    #+#             */
-/*   Updated: 2022/08/09 20:32:09 by mbarylak         ###   ########.fr       */
+/*   Updated: 2022/08/09 21:00:32 by mbarylak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	*routine(void *p)
 	philo = (t_philo *)p;
 	in = philo->in;
 	if (philo->id % 2 != 0)
-		usleep(15000);
+		usleep(1500);
 	while (!in->death)
 	{
 		philo_eat(philo);
