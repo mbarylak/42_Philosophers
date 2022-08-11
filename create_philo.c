@@ -6,7 +6,7 @@
 /*   By: mbarylak <mbarylak@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 19:25:54 by mbarylak          #+#    #+#             */
-/*   Updated: 2022/08/11 18:43:23 by mbarylak         ###   ########.fr       */
+/*   Updated: 2022/08/11 19:31:10 by mbarylak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void	check_death(t_input *in, t_philo *p)
 				break ;
 			}
 			pthread_mutex_unlock(&(in->eating));
-			usleep(100);
+			usleep(50);
 		}
 		if (in->death)
 			break ;

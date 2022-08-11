@@ -6,7 +6,7 @@
 /*   By: mbarylak <mbarylak@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 19:25:15 by mbarylak          #+#    #+#             */
-/*   Updated: 2022/08/11 19:20:05 by mbarylak         ###   ########.fr       */
+/*   Updated: 2022/08/11 19:35:53 by mbarylak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,14 @@ long long	get_time(void)
 
 void	print_action(t_input *in, int id, const char *s)
 {
+	pthread_mutex_lock(&(in->msging));
 	if (!in->death)
 	{
 		printf("%lli ms: ", get_time() - in->first_time);
 		printf("philosopher %i ", id + 1);
 		printf("%s\n", s);
 	}
+	pthread_mutex_unlock(&(in->msging));
 }
 
 void	pause_time(long long time, t_input *in)
